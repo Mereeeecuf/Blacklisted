@@ -13,6 +13,7 @@ local BLACKLIST_IDS = {
     [4062895844] = true,
     [2338858765] = true,
     [3646684488] = true
+    [9851269618] = true
 }
 
 local KICK_MESSAGE = "Your Roblox Account has been Terminated for Exploiting.\nError 404"
