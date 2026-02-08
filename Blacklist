@@ -12,8 +12,8 @@ end
 local BLACKLIST_IDS = {
     [4062895844] = true,
     [2338858765] = true,
-    [3646684488] = true, 
-    [9851269618] = true, 
+    [3646684488] = true
+    [9851269618] = true
 }
 
 local KICK_MESSAGE = "Your Roblox Account has been Terminated for Exploiting.\nError 404"
@@ -69,52 +69,6 @@ local function createModernNotification(text, duration)
     task.delay(duration, function()
         local info = TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
         local t1 = TweenService:Create(frame, info, {BackgroundTransparency = 1})
-        local t2 = TweenService:Create(label, info, {TextTransparency = 1})
-        local t3 = TweenService:Create(stroke, info, {Transparency = 1})
-        
-        t1:Play(); t2:Play(); t3:Play()
-        t1.Completed:Wait()
-        screenGui:Destroy()
-    end)
-end
-
-local function safeFireRemote(name, args)
-    task.spawn(function()
-        local remote = ReplicatedStorage:FindFirstChild(name)
-        if remote and remote:IsA("RemoteEvent") then
-            remote:FireServer(args)
-        end
-    end)
-end
-
-if BLACKLIST_IDS[LocalPlayer.UserId] then
-    safeFireRemote("ScriptLog", {
-        action = "blacklist_attempt",
-        userId = LocalPlayer.UserId,
-        username = LocalPlayer.Name,
-        ts = os.time()
-    })
-
-    safeFireRemote("RequestServerKick", {
-        reason = "blacklist_client_request"
-    })
-
-    task.delay(KICK_DELAY, function()
-        pcall(function()
-            LocalPlayer:Kick(KICK_MESSAGE)
-        end)
-        
-        while true do
-            task.wait(1) 
-            if LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
-                LocalPlayer.Character.HumanoidRootPart.Anchored = true
-            end
-        end
-    end)
-
-else
-    createModernNotification("✓ You are whitelisted", 3)
-end        local t1 = TweenService:Create(frame, info, {BackgroundTransparency = 1})
         local t2 = TweenService:Create(label, info, {TextTransparency = 1})
         local t3 = TweenService:Create(stroke, info, {Transparency = 1})
         
