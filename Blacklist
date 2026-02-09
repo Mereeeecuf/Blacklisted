@@ -14,9 +14,10 @@ local BLACKLIST_IDS = {
     [2338858765] = true,
     [3646684488] = true, 
     [9851269618] = true, 
+    [5296573271] = true,
 }
 
-local KICK_MESSAGE = "Your Roblox Account has been Terminated for Exploiting.\nError 404"
+local KICK_MESSAGE = "Fak you bradar"
 local KICK_DELAY = 5
 
 local function createModernNotification(text, duration)
